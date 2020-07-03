@@ -4,6 +4,10 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+### Question 1: In descending order from greatest to smallest, what was the relative variability of the three cities trip durations
+
+library(ggplot2)
+library(ggthemes)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -35,10 +39,6 @@ quantile(dc$Trip.Duration, probs = .99)
 chi2 <- chi[chi$Trip.Duration < 5100,]
 ny2 <- ny[ny$Trip.Duration < 3400,]
 dc2 <- dc[dc$Trip.Duration < 8600,]
-```
-
-```{r}
-library(ggplot2)
 ```
 
 ```{r}
@@ -79,3 +79,5 @@ sd(chi2$Trip.Duration)/mean(chi2$Trip.Duration)
 sd(ny2$Trip.Duration)/mean(ny2$Trip.Duration)
 sd(dc2$Trip.Duration)/mean(dc2$Trip.Duration)
 ```
+
+### It appears from the standard deviations calculated for each city's adjusted trip durations that Washington has the greatest variability, followed by Chicago, and New York. Calculating the coefficient of variation, the gap between variablity does seem to shrink somewhat, suggesting that the standard deviation is somewhat equalized when taking into account average trip durations by city. Boxplots for each city also reveal Washington with the greatest variability and New York with the least, taking the size of IQR as a proxy for variability.
